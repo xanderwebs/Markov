@@ -33,5 +33,6 @@ ActiveRecord::Schema.define(version: 20140523005858) do
 
   add_index "paths", ["begin_node_id"], name: "index_paths_on_begin_node_id", using: :btree
   add_index "paths", ["end_node_id"], name: "index_paths_on_end_node_id", using: :btree
+  add_index "paths", ["total_traversals"], name: "index_paths_on_total_traversals", using: :btree
 
 end
