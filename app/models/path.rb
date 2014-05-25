@@ -1,7 +1,7 @@
 class Path < ActiveRecord::Base
   validates :end_node_id, presence: true
   before_create :uniqueness_of_node_pair
-  after_create :update_node_visits
+  after_update :update_node_visits
 
   def begin_node
     Node.find(begin_node_id)
@@ -21,7 +21,7 @@ class Path < ActiveRecord::Base
 
   def uniqueness_of_node_pair
     if Path.node_pair_exists?(begin_node_id, end_node_id)
-      errors.add(:node_uniqueness, "Path already exists")
+      errors.add(:path_uniqueness, "Path already exists")
     end
   end
 
