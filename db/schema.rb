@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20140523005858) do
   end
 
   create_table "paths", force: true do |t|
-    t.integer  "total_traversals", default: 1
+    t.integer  "total_traversals", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "begin_node_id"
