@@ -10,5 +10,5 @@
     - @nodes.each do |node|
       %tr
         %td= node.name
-        %td{style: "text-align: center"}= node.total_visits
-        %td{style: "text-align: right"}= link_to "Recs", recommendations_path(node.id)
+        %td= node.total_visits
+        %td= link_to "Recs", recommendations_path(id: node.id, format: :json)
