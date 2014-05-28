@@ -11,7 +11,7 @@
 end
 
 500.times do |i|
-  p = Path.where(begin_node_id: Node.all.sample.id, end_node_id: Node.all.sample.id).first_or_create!
-  traversals = p.total_traversals + 1
-  p.update(total_traversals: traversals)
+  p = Path.find_or_create_by(begin_node_id: Node.all.sample.id, end_node_id: Node.all.sample.id)
+  p.total_traversals = p.total_traversals + 1
+  p.save!
 end
