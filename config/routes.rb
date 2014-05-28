@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  root 'recommendations#index'
+
+  controller 'recommendations' do
+    get 'recommendation', action: 'index'
+    get 'recommendations(/*prev_ids)/:id', action: 'show', as: 'recommendations'
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
