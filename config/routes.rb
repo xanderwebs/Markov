@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   controller 'recommendations' do
     get 'recommendation', action: 'index'
-    get 'recommendations(/*prev_ids)/:id', action: 'show', as: 'recommendations'
+    get 'recommendations(/*previous_ids)/:id', action: 'show', as: 'recommendations'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
