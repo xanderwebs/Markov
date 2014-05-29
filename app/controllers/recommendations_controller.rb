@@ -5,13 +5,15 @@ class RecommendationsController < ApplicationController
   end
 
   def show
-    node_ids = !params[:previous_ids].nil? ? params[:previous_ids].split('/') : []
-    node_ids.push(params[:id]).map! { |x| x.to_i }
+    path = !params[:previous_ids].nil? ? params[:previous_ids].split('/') : []
+    path.push(params[:id]).map! { |x| x.to_i }
 
     # Sanity Check, @todo: better fix later.
-    render(status: 400, json: { errors: 'Bad ID' }) if node_ids.max > Node.all.size
+    render(status: 400, json: { errors: 'Bad ID' }) if path.max > Node.all.size
 
-    @nodes = recommended_array generate_probability_hash(node_ids)
+    recommended_nodes = recommended_array generate_probability_hash(path.clone)
+    @nodes = recommended_nodes.map {|x| { id: x.first, name: Node.find(x.first).name, score: x.last } }
+    @path = path
   end
 
   private

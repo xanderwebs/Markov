@@ -11,8 +11,8 @@ class Node < ActiveRecord::Base
     normalized combined.each_key { |k| combined[k] *= prev_hash[k]}
   end
 
-  def normalized h
-    normalizing_constant = h.values.inject(:+)
-    h.each_key { |k| h[k] /= normalizing_constant}
+  def normalized hash
+    normalizing_constant = hash.values.inject(:+)
+    hash.each_key { |k| hash[k] /= normalizing_constant}
   end
 end
