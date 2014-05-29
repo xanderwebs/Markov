@@ -9,4 +9,10 @@ class ApplicationController < ActionController::Base
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
+
+  def authenticate_user!
+    if current_user.nil?
+      redirect_to log_in_path
+    end
+  end
 end
