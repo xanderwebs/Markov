@@ -1,10 +1,20 @@
 Rails.application.routes.draw do
+
   root 'recommendations#index'
 
   controller 'recommendations' do
     get 'recommendation', action: 'index'
     get 'recommendations(/*previous_ids)/:id', action: 'show', as: 'recommendations'
   end
+
+  # Special aliased routes
+  get "log_out", to: "sessions#destroy"
+  get "log_in", to: "sessions#new"
+  get "sign_up", to: "users#new"
+
+  # Regular RESTful routes
+  resources :users
+  resources :sessions
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
