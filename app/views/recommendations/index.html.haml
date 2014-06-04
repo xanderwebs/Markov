@@ -1,4 +1,4 @@
-%h1 Videos
+%h1 People
 
 - if @nodes.any?
   %table
@@ -10,4 +10,4 @@
       %tr
         %td= node.name
         %td= node.total_visits
-        %td= link_to "Recs", recommendations_path(id: node.id, format: :json)
+        %td= link_to "Recommend Me", recommendations_path(id: node.id, format: :json)

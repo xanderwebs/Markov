@@ -6,11 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-20.times do |i|
-  Node.create!(name: Faker::Company.name())
+150.times do |i|
+  Node.create!(name: Faker::Name.name())
 end
 
-500.times do |i|
+10000.times do |i|
   p = Path.find_or_create_by(begin_node_id: Node.all.sample.id, end_node_id: Node.all.sample.id)
   p.total_traversals = p.total_traversals + 1
   p.save!

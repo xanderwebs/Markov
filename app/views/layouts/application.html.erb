@@ -10,7 +10,7 @@
 
 <div id="user_nav">
   <% if current_user %>
-    Logged in as <b><%= current_user.email %></b> &mdash
+    Logged in as <b><%= current_user.email %></b> &mdash;
     <%= link_to "Log Out", log_out_path %>
   <% else %>
     <%= link_to "Sign Up", sign_up_path %> or
